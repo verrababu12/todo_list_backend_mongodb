@@ -1,0 +1,21 @@
+GET http://localhost:3001
+
+###
+POST http://localhost:3001/api/add-todo
+Content-Type: application/json
+
+{
+    "text":"Learn Apps"
+}
+
+###
+PUT http://localhost:3001/api/todos/67f74c40128ee630c992b11d
+Content-Type: application/json
+
+{
+    "text":"Learn Java",
+    "isChecked":true
+}
+
+###
+GET http://localhost:3001/api/todos
