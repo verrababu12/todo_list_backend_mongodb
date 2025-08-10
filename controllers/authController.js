@@ -37,7 +37,7 @@ exports.login = async (req, res) => {
       user: { id: user._id, email: user.email, username: user.username },
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
+    console.error("Login Error:", err.message, err.stack);
+    res.status(500).json({ error: "Server error", details: err.message });
   }
 };
