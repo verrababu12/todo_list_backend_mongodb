@@ -1,6 +1,6 @@
 const Todo = require("../models/todoModel");
 
-exports.getTodos = async (req, res) => {
+exports.allTodos = async (req, res) => {
   try {
     const todos = await Todo.find();
     res.json(todos);
@@ -10,17 +10,17 @@ exports.getTodos = async (req, res) => {
   }
 };
 
-// exports.getTodos = async (req, res) => {
-//   try {
-//     const todos = await Todo.find({ userId: req.user.id }).sort({
-//       createdAt: -1,
-//     });
-//     res.json(todos);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: "Error fetching todos" });
-//   }
-// };
+exports.getTodos = async (req, res) => {
+  try {
+    const todos = await Todo.find({ userId: req.user.id }).sort({
+      createdAt: -1,
+    });
+    res.json(todos);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error fetching todos" });
+  }
+};
 
 exports.addTodo = async (req, res) => {
   const { text } = req.body;
