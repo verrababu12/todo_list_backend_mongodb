@@ -33,7 +33,7 @@ exports.login = async (req, res) => {
       throw new Error("JWT_TOKEN not set in .env file");
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_TOKEN, {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_TOKEN, {
       expiresIn: "7d",
     });
     res.json({
