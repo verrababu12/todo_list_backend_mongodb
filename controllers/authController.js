@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
 
-    if (!process.env.JWT_TOKEN) {
+    if (!process.env.JWT_SECRET_TOKEN) {
       throw new Error("JWT_TOKEN not set in .env file");
     }
 
